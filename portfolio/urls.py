@@ -22,4 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', jobs.views.homepage, name='home'),
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+    path('jobs/<int:job_id>', jobs.views.detail, name = 'detail'),
+]
+
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
